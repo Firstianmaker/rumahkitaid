@@ -1,0 +1,1756 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "operationId": "PublicController_health",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Public"
+        ]
+      }
+    },
+    "/api/v1/units": {
+      "get": {
+        "operationId": "PublicController_units",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Daftar unit, filter status/search/bedrooms, pagination page/limit",
+        "tags": [
+          "Public"
+        ]
+      },
+      "post": {
+        "operationId": "RentalController_unitCreate",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnitDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/units/{id}": {
+      "get": {
+        "operationId": "PublicController_unit",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Public"
+        ]
+      },
+      "put": {
+        "operationId": "RentalController_unitUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnitDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/auth/register": {
+      "post": {
+        "operationId": "PublicController_register",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Public"
+        ]
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "operationId": "PublicController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Public"
+        ]
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "PublicController_logout",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Public"
+        ]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "RentalController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/dashboard": {
+      "get": {
+        "operationId": "RentalController_dashboard",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/units/{id}/status": {
+      "patch": {
+        "operationId": "RentalController_unitStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/applications": {
+      "get": {
+        "operationId": "RentalController_applications",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      },
+      "post": {
+        "operationId": "RentalController_apply",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/applications/{id}/approve": {
+      "post": {
+        "operationId": "RentalController_approve",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApprovalDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/applications/{id}/reject": {
+      "post": {
+        "operationId": "RentalController_reject",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReasonDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases": {
+      "get": {
+        "operationId": "RentalController_leases",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}": {
+      "get": {
+        "operationId": "RentalController_lease",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}/contract": {
+      "post": {
+        "operationId": "RentalController_contract",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}/verify": {
+      "post": {
+        "operationId": "RentalController_verify",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}/cancel": {
+      "post": {
+        "operationId": "RentalController_cancel",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReasonDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}/meters": {
+      "post": {
+        "operationId": "RentalController_meter",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MeterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}/inspections": {
+      "post": {
+        "operationId": "RentalController_inspection",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InspectionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}/move-in": {
+      "post": {
+        "operationId": "RentalController_moveIn",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}/move-out": {
+      "post": {
+        "operationId": "RentalController_moveOut",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SettlementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/leases/{id}/refund": {
+      "post": {
+        "operationId": "RentalController_refund",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReasonDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/invoices": {
+      "get": {
+        "operationId": "RentalController_invoices",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/invoices/generate": {
+      "post": {
+        "operationId": "RentalController_generate",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/invoices/{id}/pay": {
+      "post": {
+        "operationId": "RentalController_pay",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/invoices/{id}/simulate": {
+      "post": {
+        "operationId": "RentalController_simulate",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/payments": {
+      "get": {
+        "operationId": "RentalController_payments",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/payments/{id}/review": {
+      "post": {
+        "operationId": "RentalController_review",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/documents": {
+      "post": {
+        "operationId": "RentalController_upload",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "file"
+                ],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/documents/{id}": {
+      "get": {
+        "operationId": "RentalController_download",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/tickets": {
+      "get": {
+        "operationId": "RentalController_tickets",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      },
+      "post": {
+        "operationId": "RentalController_ticket",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TicketDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/tickets/{id}/comments": {
+      "post": {
+        "operationId": "RentalController_comment",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/tickets/{id}/status": {
+      "patch": {
+        "operationId": "RentalController_status",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TicketStatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/announcements": {
+      "get": {
+        "operationId": "RentalController_announcements",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      },
+      "post": {
+        "operationId": "RentalController_announce",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnnouncementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/settings": {
+      "get": {
+        "operationId": "RentalController_settings",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      },
+      "put": {
+        "operationId": "RentalController_settingsSave",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SettingsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/tenants": {
+      "get": {
+        "operationId": "RentalController_tenants",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/reports": {
+      "get": {
+        "operationId": "RentalController_reports",
+        "parameters": [
+          {
+            "name": "from",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/reports/export": {
+      "get": {
+        "operationId": "RentalController_export",
+        "parameters": [
+          {
+            "name": "from",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    },
+    "/api/v1/audit/{id}": {
+      "get": {
+        "operationId": "RentalController_audit",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "rk_session": []
+          }
+        ],
+        "tags": [
+          "Rental management"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "RumahKita.id API",
+    "description": "Manajemen kontrakan, pembayaran manual, dan demo terpisah.",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "rk_session"
+      }
+    },
+    "schemas": {
+      "RegisterDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password",
+          "name",
+          "phone"
+        ]
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "UnitDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "rent": {
+            "type": "number"
+          },
+          "deposit": {
+            "type": "number"
+          },
+          "area": {
+            "type": "number"
+          },
+          "bedrooms": {
+            "type": "number"
+          },
+          "bathrooms": {
+            "type": "number"
+          },
+          "amenities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "name",
+          "description",
+          "rent",
+          "deposit",
+          "area",
+          "bedrooms",
+          "bathrooms",
+          "amenities"
+        ]
+      },
+      "AvailabilityDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "ApplicationDto": {
+        "type": "object",
+        "properties": {
+          "unitId": {
+            "type": "string"
+          },
+          "moveInDate": {
+            "type": "string"
+          },
+          "occupants": {
+            "type": "number"
+          },
+          "occupation": {
+            "type": "string"
+          },
+          "currentAddress": {
+            "type": "string"
+          },
+          "employmentType": {
+            "type": "string",
+            "enum": [
+              "EMPLOYEE",
+              "SELF_EMPLOYED",
+              "FREELANCE",
+              "RETIRED",
+              "OTHER"
+            ]
+          },
+          "employerName": {
+            "type": "string"
+          },
+          "monthlyIncome": {
+            "type": "number"
+          },
+          "incomeSource": {
+            "type": "string"
+          },
+          "incomeDocumentId": {
+            "type": "string"
+          },
+          "householdType": {
+            "type": "string",
+            "enum": [
+              "ALONE",
+              "PARTNER",
+              "FAMILY",
+              "SHARED"
+            ]
+          },
+          "adultCount": {
+            "type": "number"
+          },
+          "childCount": {
+            "type": "number"
+          },
+          "elderlyCount": {
+            "type": "number"
+          },
+          "petCount": {
+            "type": "number"
+          },
+          "petTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Kucing",
+                "Anjing",
+                "Burung",
+                "Ikan",
+                "Kelinci",
+                "Lainnya"
+              ]
+            }
+          },
+          "petNotes": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "unitId",
+          "moveInDate",
+          "occupants",
+          "occupation",
+          "currentAddress",
+          "employmentType",
+          "monthlyIncome",
+          "incomeSource",
+          "householdType",
+          "adultCount",
+          "childCount",
+          "elderlyCount",
+          "petCount",
+          "petTypes"
+        ]
+      },
+      "ApprovalDto": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string"
+          },
+          "months": {
+            "type": "number"
+          },
+          "dueDay": {
+            "type": "number"
+          },
+          "rent": {
+            "type": "number"
+          },
+          "deposit": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "startDate",
+          "months",
+          "dueDay",
+          "rent",
+          "deposit"
+        ]
+      },
+      "ReasonDto": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "DocumentDto": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "documentId"
+        ]
+      },
+      "MeterDto": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "type": "string"
+          },
+          "electricityStart": {
+            "type": "number"
+          },
+          "electricityEnd": {
+            "type": "number"
+          },
+          "waterStart": {
+            "type": "number"
+          },
+          "waterEnd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "period",
+          "electricityStart",
+          "electricityEnd",
+          "waterStart",
+          "waterEnd"
+        ]
+      },
+      "InspectionDto": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "checklist": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          },
+          "documentIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "electricity": {
+            "type": "number"
+          },
+          "water": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "kind",
+          "checklist",
+          "notes",
+          "documentIds",
+          "electricity",
+          "water"
+        ]
+      },
+      "SettlementDto": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          },
+          "damages": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "reason",
+          "damages"
+        ]
+      },
+      "SimulationDto": {
+        "type": "object",
+        "properties": {
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "success",
+              "failed"
+            ]
+          }
+        },
+        "required": [
+          "outcome"
+        ]
+      },
+      "ReviewDto": {
+        "type": "object",
+        "properties": {
+          "approve": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "approve"
+        ]
+      },
+      "TicketDto": {
+        "type": "object",
+        "properties": {
+          "leaseId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "documentIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "leaseId",
+          "title",
+          "description",
+          "priority",
+          "documentIds"
+        ]
+      },
+      "CommentDto": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "TicketStatusDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "AnnouncementDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "unitId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "body"
+        ]
+      },
+      "SettingsDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "bankName": {
+            "type": "string"
+          },
+          "bankAccount": {
+            "type": "string"
+          },
+          "bankOwner": {
+            "type": "string"
+          },
+          "electricityRate": {
+            "type": "number"
+          },
+          "waterRate": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "address",
+          "bankName",
+          "bankAccount",
+          "bankOwner",
+          "electricityRate",
+          "waterRate"
+        ]
+      }
+    }
+  }
+}

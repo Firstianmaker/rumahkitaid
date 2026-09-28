@@ -1,0 +1,35 @@
+name: Quality checks
+on: [push, pull_request]
+jobs:
+  backend-and-build:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_DATABASE: rumahkita_test
+          MYSQL_USER: rumahkita
+          MYSQL_PASSWORD: test_password
+          MYSQL_ROOT_PASSWORD: test_root_password
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=15
+    env:
+      DATABASE_URL: mysql://rumahkita:test_password@127.0.0.1:3306/rumahkita_test
+      TEST_DATABASE_URL: mysql://rumahkita:test_password@127.0.0.1:3306/rumahkita_test
+      DEMO_MODE: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run db:generate
+      - run: npm run db:migrate
+      - run: npm test
+      - run: npm run test:integration
+      - run: npm run build

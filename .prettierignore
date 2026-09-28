@@ -1,0 +1,8 @@
+node_modules
+.runtime
+apps/web/.next
+apps/api/dist
+apps/web/test-results
+packages/api-client/openapi.json
+packages/api-client/schema.d.ts
+package-lock.json

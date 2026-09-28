@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:8.4
+    ports: ["3306:3306"]
+    environment:
+      MYSQL_DATABASE: rumahkita
+      MYSQL_USER: rumahkita
+      MYSQL_PASSWORD: rumahkita_local
+      MYSQL_ROOT_PASSWORD: local_root_only
+    volumes: ["mysql-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 20
+  mysql-test:
+    image: mysql:8.4
+    profiles: ["test"]
+    ports: ["3307:3306"]
+    environment:
+      MYSQL_DATABASE: rumahkita_test
+      MYSQL_USER: rumahkita
+      MYSQL_PASSWORD: rumahkita_local
+      MYSQL_ROOT_PASSWORD: local_test_only
+    tmpfs: ["/var/lib/mysql"]
+volumes:
+  mysql-data:
